@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    container_name: 'nginx'
+    build:
+      context: './nginx/'
+      dockerfile: 'Dockerfile'
+    depends_on:
+      - 'grapher'
+      - 'grapher-api'
+    ports:
+      - '80:80'
+  grapher:
+    container_name: 'grapher'
+    build:
+      context: './grapher/'
+      dockerfile: 'Dockerfile'
+    depends_on:
+      - 'grapher-api'
+    expose:
+      - '80'
+  grapher-api:
+    container_name: 'grapher-api'
+    build:
+      context: './grapher-api/'
+      dockerfile: 'Dockerfile'
+    expose:
+      - '80'

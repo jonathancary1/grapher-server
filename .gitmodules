@@ -1,0 +1,6 @@
+[submodule "grapher"]
+	path = grapher
+	url = https://github.com/jonathancary1/grapher
+[submodule "grapher-api"]
+	path = grapher-api
+	url = https://github.com/jonathancary1/grapher-api

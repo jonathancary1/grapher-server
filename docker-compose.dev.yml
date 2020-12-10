@@ -1,0 +1,34 @@
+version: '3'
+services:
+  nginx-dev:
+    container_name: 'nginx-dev'
+    build:
+      context: './nginx/'
+      dockerfile: 'Dockerfile.dev'
+    depends_on:
+      - 'grapher-dev'
+      - 'grapher-api-dev'
+    ports:
+      - '8080:8080'
+  grapher-dev:
+    container_name: 'grapher-dev'
+    build:
+      context: './grapher/'
+      dockerfile: 'Dockerfile.dev'
+    depends_on:
+      - 'grapher-api-dev'
+    expose:
+      - '8080'
+    volumes:
+      - './grapher/:/app/'
+      - '/app/node_modules/'
+  grapher-api-dev:
+    container_name: 'grapher-api-dev'
+    build:
+      context: './grapher-api/'
+      dockerfile: 'Dockerfile.dev'
+    expose:
+      - '8080'
+    volumes:
+      - './grapher-api/:/app/'
+      - '/app/node_modules/'
