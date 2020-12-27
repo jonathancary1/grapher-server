@@ -10,6 +10,11 @@ services:
       - 'grapher-api'
     ports:
       - '80:80'
+  mongo:
+    container_name: 'mongo'
+    image: 'mongo'
+    expose:
+      - '27017'
   grapher:
     container_name: 'grapher'
     build:
@@ -24,5 +29,7 @@ services:
     build:
       context: './grapher-api/'
       dockerfile: 'Dockerfile'
+    depends_on:
+      - 'mongo'
     expose:
       - '80'
