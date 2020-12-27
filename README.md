@@ -1,6 +1,6 @@
 # Grapher Server
 
-The deployment configuration for Grapher.
+The deployment configuration for [Grapher](https://grapher.caryjonathan.com/).
 
 ## Dependencies
 ```
