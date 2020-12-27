@@ -33,4 +33,5 @@ docker exec -it nginx sh
 apk add certbot certbot-nginx
 certbot --nginx -d grapher.caryjonathan.com
 crontab -l | { cat; echo "0 0,12 * * * certbot renew --post-hook \"nginx -s reload\""; } | crontab -
+crond
 ```
