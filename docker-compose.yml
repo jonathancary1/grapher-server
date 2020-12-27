@@ -11,11 +11,15 @@ services:
     ports:
       - '80:80'
       - '443:443'
+    logging:
+      driver: 'awslogs'
   mongo:
     container_name: 'mongo'
     image: 'mongo'
     expose:
       - '27017'
+    logging:
+      driver: 'awslogs'
   grapher:
     container_name: 'grapher'
     build:
@@ -25,6 +29,8 @@ services:
       - 'grapher-api'
     expose:
       - '80'
+    logging:
+      driver: 'awslogs'
   grapher-api:
     container_name: 'grapher-api'
     build:
@@ -34,3 +40,5 @@ services:
       - 'mongo'
     expose:
       - '80'
+    logging:
+      driver: 'awslogs'
