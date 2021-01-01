@@ -3,8 +3,8 @@ services:
   nginx:
     container_name: 'nginx'
     build:
-      context: './'
-      dockerfile: './nginx/Dockerfile'
+      context: './nginx/'
+      dockerfile: 'Dockerfile'
     depends_on:
       - 'grapher-api'
     ports:
@@ -15,6 +15,13 @@ services:
     image: 'mongo'
     expose:
       - '27017'
+  grapher:
+    container_name: 'grapher'
+    build:
+      context: './grapher/'
+      dockerfile: 'Dockerfile'
+    expose:
+      - '80'
   grapher-api:
     container_name: 'grapher-api'
     build:
