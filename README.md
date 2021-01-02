@@ -35,3 +35,11 @@ certbot --nginx -d grapher.caryjonathan.com
 crontab -l | { cat; echo "0 0,12 * * * certbot renew --post-hook \"nginx -s reload\""; } | crontab -
 crond
 ```
+
+## Redeployment
+```
+cd grapher-server
+git pull --recurse-submodules
+docker-compose up --no-deps --detach --build grapher
+docker-compose up --no-deps --detach --build grapher-api
+```
